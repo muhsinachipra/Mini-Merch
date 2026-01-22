@@ -43,7 +43,8 @@ export default function Admin() {
 
   return (
     <div className="min-h-screen bg-background-light dark:bg-background-dark font-display text-[#101418] dark:text-white flex flex-col transition-colors duration-200">
-      <Navbar /> // Navbar handles the header part (Logo, Search, User)
+      <Navbar />
+      {/* Navbar handles the header part (Logo, Search, User) */}
       {/* 
         Note: The design has a slightly different header for Admin (Search bar details etc), 
         but reusing Navbar maintains consistency. I will add the secondary header below.
