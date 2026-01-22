@@ -15,13 +15,8 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const login = (email, password) => {
+  const login = (email, password, role = 'user') => {
     // Mock Logic
-    let role = 'user';
-    if (email === 'admin@test.com') {
-      role = 'admin';
-    }
-
     const newUser = { email, role };
     setUser(newUser);
     localStorage.setItem('mini_merch_user', JSON.stringify(newUser));

@@ -19,14 +19,8 @@ export default function Login() {
       return;
     }
 
-    // Mock Validation based on Tab
-    if (activeTab === 'admin' && email !== 'admin@test.com') {
-      toast.error('Invalid admin credentials');
-      return;
-    }
-    
     // In a real app we'd validate password. Here any password works.
-    login(email, password);
+    login(email, password, activeTab);
     toast.success('Logged in successfully!');
     
     if (activeTab === 'admin') {
@@ -83,7 +77,7 @@ export default function Login() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full h-12 pl-11 pr-4 rounded-lg bg-white dark:bg-background-dark border border-gray-200 dark:border-gray-700 text-[#101418] dark:text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-[15px]" 
-                    placeholder={activeTab === 'admin' ? "admin@test.com" : "name@company.com"}
+                    placeholder="name@company.com"
                   />
                 </div>
               </div>
