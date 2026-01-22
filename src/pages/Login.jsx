@@ -48,7 +48,7 @@ export default function Login() {
             <Store size={28} />
           </div>
           <h1 className="text-2xl font-bold text-[#101418] dark:text-white tracking-tight">
-            Mini Merch Upload
+            Mini Merch
           </h1>
         </div>
 
