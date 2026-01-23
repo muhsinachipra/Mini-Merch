@@ -11,6 +11,7 @@ export default function Admin() {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   useEffect(() => {
     // Basic protection
@@ -39,12 +40,19 @@ export default function Admin() {
     }
   };
 
-  const filteredProducts = products.filter(
-    (p) =>
+  // Derive unique categories from products
+  const categories = ["All", ...new Set(products.map((p) => p.category))];
+
+  const filteredProducts = products.filter((p) => {
+    const matchesSearch =
       p.name.toLowerCase().includes(search.toLowerCase()) ||
       p.id.includes(search) ||
-      p.category.toLowerCase().includes(search.toLowerCase()),
-  );
+      p.category.toLowerCase().includes(search.toLowerCase());
+    const matchesCategory =
+      selectedCategory === "All" || p.category === selectedCategory;
+
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <div className="min-h-screen bg-background-light dark:bg-background-dark font-display text-[#101418] dark:text-white flex flex-col transition-colors duration-200">
@@ -84,10 +92,23 @@ export default function Admin() {
                 />
               </div>
 
-              <button className="flex items-center justify-center gap-2 rounded-lg bg-white dark:bg-gray-800 border border-[#dae0e7] dark:border-gray-700 px-4 py-2.5 text-sm font-bold text-[#101418] dark:text-white shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                <Filter size={20} />
-                <span>Filter</span>
-              </button>
+              <div className="relative">
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="appearance-none flex items-center justify-center gap-2 rounded-lg bg-white dark:bg-gray-800 border border-[#dae0e7] dark:border-gray-700 px-4 py-2.5 text-sm font-bold text-[#101418] dark:text-white shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors pr-8 cursor-pointer outline-none focus:ring-2 focus:ring-primary"
+                >
+                  {categories.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-[#101418] dark:text-white">
+                  <Filter size={16} />
+                </div>
+              </div>
+
               <button className="flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors">
                 <Download size={20} />
                 <span>Export Data</span>
