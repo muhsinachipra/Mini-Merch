@@ -76,3 +76,16 @@ export const deleteProduct = (id) => {
   products = products.filter((p) => p.id !== id);
   localStorage.setItem(PRODUCTS_KEY, JSON.stringify(products));
 };
+
+export const getProductById = (id) => {
+  const products = getProducts();
+  return products.find((p) => p.id === id);
+};
+
+export const updateProduct = (updatedProduct) => {
+  let products = getProducts();
+  products = products.map((p) =>
+    p.id === updatedProduct.id ? updatedProduct : p,
+  );
+  localStorage.setItem(PRODUCTS_KEY, JSON.stringify(products));
+};

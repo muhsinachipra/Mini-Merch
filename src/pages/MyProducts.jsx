@@ -4,11 +4,12 @@ import ProductCard from "../components/ProductCard";
 import { getProducts, deleteProduct, seedProducts } from "../utils/storage";
 import { useAuth } from "../context/AuthContext";
 import { Plus, Package } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 export default function MyProducts() {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState("all"); // 'all', 'active', 'low_stock', 'drafts' (mock)
 
@@ -35,7 +36,7 @@ export default function MyProducts() {
   };
 
   const handleEdit = (product) => {
-    toast("Edit functionality not implemented in this demo", { icon: "ℹ️" });
+    navigate(`/edit-product/${product.id}`);
   };
 
   return (

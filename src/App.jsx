@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import MyProducts from "./pages/MyProducts";
 import AddProduct from "./pages/AddProduct";
+import EditProduct from "./pages/EditProduct";
 import Admin from "./pages/Admin";
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/my-products" element={<MyProducts />} />
             <Route path="/add-product" element={<AddProduct />} />
+            <Route path="/edit-product/:id" element={<EditProduct />} />
             <Route path="/admin" element={<Admin />} />
             {/* Fallback */}
             <Route path="*" element={<Navigate to="/" replace />} />
