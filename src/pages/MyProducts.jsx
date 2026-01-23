@@ -13,9 +13,11 @@ export default function MyProducts() {
   const [filter, setFilter] = useState("all"); // 'all', 'active', 'low_stock', 'drafts' (mock)
 
   useEffect(() => {
-    seedProducts();
-    loadProducts();
-  }, []);
+    if (user) {
+      seedProducts();
+      loadProducts();
+    }
+  }, [user]);
 
   const loadProducts = () => {
     const all = getProducts();
