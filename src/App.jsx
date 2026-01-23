@@ -8,31 +8,35 @@ import AddProduct from "./pages/AddProduct";
 import EditProduct from "./pages/EditProduct";
 import Admin from "./pages/Admin";
 
+import { ThemeProvider } from "./context/ThemeContext";
+
 export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <div className="bg-background-light dark:bg-background-dark min-h-screen font-display">
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/my-products" element={<MyProducts />} />
-            <Route path="/add-product" element={<AddProduct />} />
-            <Route path="/edit-product/:id" element={<EditProduct />} />
-            <Route path="/admin" element={<Admin />} />
-            {/* Fallback */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-          <Toaster
-            position="top-right"
-            toastOptions={{
-              style: {
-                background: "#333",
-                color: "#fff",
-              },
-            }}
-          />
-        </div>
+        <ThemeProvider>
+          <div className="bg-background-light dark:bg-background-dark min-h-screen font-display">
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/my-products" element={<MyProducts />} />
+              <Route path="/add-product" element={<AddProduct />} />
+              <Route path="/edit-product/:id" element={<EditProduct />} />
+              <Route path="/admin" element={<Admin />} />
+              {/* Fallback */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+            <Toaster
+              position="top-right"
+              toastOptions={{
+                style: {
+                  background: "#333",
+                  color: "#fff",
+                },
+              }}
+            />
+          </div>
+        </ThemeProvider>
       </AuthProvider>
     </BrowserRouter>
   );
