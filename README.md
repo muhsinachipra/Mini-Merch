@@ -11,7 +11,7 @@ This project serves as a comprehensive dashboard for product management. It feat
 - **Role-Based Authentication**: Secure login system supporting multiple roles:
   - **Seller**: Manage personal product inventory.
   - **Admin**: Access to a dedicated admin dashboard for platform oversight.
-  - _Note: This project uses a mock authentication system for demonstration purposes._
+  - _Note: This project uses a mock authentication system for demonstration purposes. **You can use ANY email and password to log in.** No signup is required._
 - **Product Management**:
   - **Add Products**: Easy-to-use form for listing new merchandise.
   - **Edit Products**: Update existing product details.
