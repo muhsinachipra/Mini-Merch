@@ -62,7 +62,7 @@ Ensure you have [Node.js](https://nodejs.org/) installed on your system.
 2.  **Open in Browser**:
     The application will typically be available at `http://localhost:5173`. check your terminal for the exact URL.
 
-## Live Link
+## Links & Resources
 
-[View Live Demo](https://your-demo-link.com)
-
+- 🚀 **Live Application:** [View Live Demo](https://mini-merch.vercel.app/)
+- 🎨 **Figma Design File:** [View Wireframes & UI](https://www.figma.com/design/QNhahuv2764AJIU7qOh6bb/Mini-Merch-Test---Muhsin?node-id=0-1&t=cqcl4uYUusjQSh6q-1)
